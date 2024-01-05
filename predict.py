@@ -16,7 +16,7 @@ class Predictor(BasePredictor):
         self,
         input_video: Path = Input(description="Input video"),
         audio: Path = Input(
-            description="Input audio for lipsync", default=None),
+            description="Input audio for lipsync"),
     ) -> Path:
         """Run a single prediction on the model"""
 
