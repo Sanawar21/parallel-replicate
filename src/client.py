@@ -2,7 +2,7 @@ import requests
 import zipfile
 import io
 import os
-from utils import paths
+from .utils import paths
 from dotenv import load_dotenv
 
 load_dotenv()
