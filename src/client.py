@@ -2,6 +2,7 @@ import requests
 import zipfile
 import io
 import os
+import subprocess
 from .utils import paths
 from dotenv import load_dotenv
 
@@ -12,8 +13,11 @@ SERVER_URL = os.getenv("PRIVATE_SERVER_URL")
 
 def test():
     url = f"http://37.27.7.58:5000/download_zip/qXl7C1nV"
-    response = requests.get(url)
-    with zipfile.ZipFile(io.BytesIO(response.content), 'r') as zip_ref:
+    wget_command = f"wget -O - {url}"
+    wget_process = subprocess.Popen(
+        wget_command, shell=True, stdout=subprocess.PIPE)
+
+    with zipfile.ZipFile(io.BytesIO(wget_process.communicate()[0]), 'r') as zip_ref:
         zip_ref.extractall(paths.inputs_folder)
 
 
