@@ -13,7 +13,7 @@ SERVER_URL = os.getenv("PRIVATE_SERVER_URL")
 
 def test():
     # url = f"http://37.27.7.58:5000/download_zip/qXl7C1nV"
-    url = "https://drive.google.com/file/d/1f_Mw-xp_xCdyKxgROPqTX5C2SK5XyEKs/view?usp=drive_link"
+    url = "https://drive.google.com/uc?export=download&id=1f_Mw-xp_xCdyKxgROPqTX5C2SK5XyEKs"
     wget_command = f"wget -O - {url}"
     wget_process = subprocess.Popen(
         wget_command, shell=True, stdout=subprocess.PIPE)
