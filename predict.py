@@ -3,10 +3,9 @@
 
 from cog import BasePredictor, Input, Path
 from app import generate
-from src.utils import paths, restore_dirs, make_archive
-from src.client import download_zip, test
+from src.utils import paths, restore_dirs
+from src.client import download_zip
 import shutil
-import os
 
 
 class Predictor(BasePredictor):
@@ -24,11 +23,11 @@ class Predictor(BasePredictor):
         # shutil.copy(input_video, paths.input_video)
         # shutil.copy(audio, paths.audio)
 
-        # download_zip(session_id)
-        test()
+        download_zip(session_id)
+        # test()
         shutil.copy(paths.inputs_folder / "audio.wav", paths.audio)
         generate()
-        return Path("".join([str(paths.captioned_video).split(".")[0], "_with_audio.mp4"]))
+        return Path(paths.enhanced_video)
 
 
 if __name__ == "__main__":

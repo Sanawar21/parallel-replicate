@@ -9,7 +9,6 @@ def generate():
     video.generate_video()
     status.set(status.enhancing_video)
     video.enhance_video()
-    video.merge_audio_and_video(video=VideoFileClip(str(paths.enhanced_video)))
     return status.done
     # except Exception as e:
     #     return e
